@@ -1,3 +1,4 @@
 module UdaciListErrors
-  # Error classes go here
+    class ErrorName < StandardError
+    end
 end
