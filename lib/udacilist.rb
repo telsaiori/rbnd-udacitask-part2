@@ -19,10 +19,9 @@ class UdaciList
     end
   end
   
+  #Allow deletion of multiple items
     def delete(*index)
       index.each do |no|
-        p no
-        p @items
         if no > @items.size
           raise UdaciListErrors::IndexExceedsListSize
         else
@@ -60,11 +59,17 @@ class UdaciList
     else
       puts type.capitalize   + " List"
       puts "-" * type.length
-      type_filter.each do |item|
-        puts item.details
-      end
+      tp type_filter
+      # type_filter.each do |item|
+      #   puts item.details
+      # end
       puts "-" * type.length
     end
+  end
+  
+  def change_priority(description, priority)
+    need_change = @items.select {|item| item.description == description}
+    need_change.map{|item| item.priority = priority}
   end
 
 end

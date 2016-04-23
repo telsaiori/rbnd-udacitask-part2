@@ -2,6 +2,7 @@ require 'chronic'
 require 'colorize'
 # Find a third gem of your choice and add it to your project
 require 'date'
+require 'table_print' #added gem
 require_relative "lib/listable"
 require_relative "lib/errors"
 require_relative "lib/udacilist"
@@ -52,3 +53,8 @@ new_list.filter("dfd")
 # ---------------------
 list.delete(1,2)
 list.all
+
+# Change the priority levels of items
+# -----------------------------------
+new_list.change_priority("Buy more dog food", "low")
+new_list.all
