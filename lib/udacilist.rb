@@ -1,5 +1,6 @@
 class UdaciList
   attr_reader :title, :items
+  attr_writer :title
 
   def initialize(options={})
     @title = options[:title]
@@ -8,22 +9,50 @@ class UdaciList
   def add(type, description, options={})
     type = type.downcase
     if type == "todo" || type == "event" || type == "link"
-      @items.push TodoItem.new(description, options) if type == "todo"
-      @items.push EventItem.new(description, options) if type == "event"
-      @items.push LinkItem.new(description, options) if type == "link"
+      priority = ["high", "medium", "low", nil]
+      raise UdaciListErrors::InvalidPriorityValue unless priority.include?options[:priority]
+      @items.push TodoItem.new(type, description, options) if type == "todo"
+      @items.push EventItem.new(type, description, options) if type == "event"
+      @items.push LinkItem.new(type, description, options) if type == "link"
     else
-      raise UdaciListErrors::InvalidItemType, "errer"
+      raise UdaciListErrors::InvalidItemType
     end
   end
   def delete(index)
-    @items.delete_at(index - 1)
+    if index > @items.size
+      raise UdaciListErrors::IndexExceedsListSize
+    else
+      @items.delete_at(index - 1)
+    end
   end
   def all
-    puts "-" * @title.length
-    puts @title
-    puts "-" * @title.length
+    if @title
+      puts "-" * @title.length
+      puts @title
+      puts "-" * @title.length
+    else
+      @title = "UNTITLED LIST"
+      puts "-" * @title.length
+      puts @title
+      puts "-" * @title.length
+    end
     @items.each_with_index do |item, position|
       puts "#{position + 1}) #{item.details}"
     end
   end
+  
+  def filter(type)
+    type_filter = @items.select{|todo| todo.type == type}
+    if type_filter.empty?
+      puts "No such item type"
+    else
+      puts type.capitalize   + " List"
+      puts "-" * type.length
+      type_filter.each do |item|
+        puts item.details
+      end
+      puts "-" * type.length
+    end
+  end
+
 end
