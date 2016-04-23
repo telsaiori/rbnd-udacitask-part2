@@ -18,13 +18,25 @@ class UdaciList
       raise UdaciListErrors::InvalidItemType
     end
   end
-  def delete(index)
-    if index > @items.size
-      raise UdaciListErrors::IndexExceedsListSize
-    else
-      @items.delete_at(index - 1)
+  
+    def delete(*index)
+      index.each do |no|
+        p no
+        p @items
+        if no > @items.size
+          raise UdaciListErrors::IndexExceedsListSize
+        else
+          @items.delete_at(no - 1)
+        end
+      end
     end
-  end
+  # def delete(index)
+  #   if index > @items.size
+  #     raise UdaciListErrors::IndexExceedsListSize
+  #   else
+  #     @items.delete_at(index - 1)
+  #   end
+  # end
   def all
     if @title
       puts "-" * @title.length

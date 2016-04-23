@@ -45,3 +45,10 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter("event")
+new_list.filter("dfd")
+
+
+# Allow deletion of multiple items
+# ---------------------
+list.delete(1,2)
+list.all
