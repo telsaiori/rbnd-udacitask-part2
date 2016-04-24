@@ -1,20 +1,28 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+'table_print'
+I use it to displayed the filtered items.
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) Feature 1... Allow deletion of multiple items
+  b) Feature 2... Change the priority levels of items
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
-2. What was the most rewarding challenge you conquered?
-3. What two additional features did you build? Why?
-4. Where do you still have room to grow?
+About 6 hours.
 
-1) Buy more cat food             due: 02/03/16 ⇩
-2) Sweep floors                  due: 01/30/16
-3) Buy groceries                 due: No due date ⇧
-4) Birthday Party                event dates: 05/08/16
-5) Vacation                      event dates: 05/28/16 -- 05/31/16
-6) https://github.com            site name: GitHub Homepage
+2. What was the most rewarding challenge you conquered?
+I found that I misunderstanding some basic logic like "return" and "or".
+I got stuck on the raise UdaciListErrors::InvalidPriorityValue if options[:priority] != "high" || options[:priority] != "medium" || options[:priority] != "low"
+and then I realize that it evaluates the whole thing to true and doesn’t even bother checking the rest of it when it hit the true.
+
+3. What two additional features did you build? Why?
+  a) Feature 1... Allow deletion of multiple items
+  b) Feature 2... Change the priority levels of items
+Sadly I think I don't know how to write other new features.
+
+4. Where do you still have room to grow?
+I still feel confused to handle the object. I need to print the instance all the time to check what kind of data in it.
+And not only use "each" to handle the array I also try to use other method like map,select....

@@ -67,6 +67,7 @@ class UdaciList
     end
   end
   
+# Change the priority levels of items
   def change_priority(description, priority)
     need_change = @items.select {|item| item.description == description}
     need_change.map{|item| item.priority = priority}
