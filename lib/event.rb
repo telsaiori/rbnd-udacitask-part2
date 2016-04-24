@@ -9,7 +9,8 @@ class EventItem
     @type = type
   end
   
+
   def details
-    format_description(@description) + "event dates: " + format_date(start_date: @start_date, end_date: @end_date)
+    "Type: #{@type.capitalize}".ljust(12) + format_description(@description) + "event dates: " + format_date(start_date: @start_date, end_date: @end_date)
   end
 end

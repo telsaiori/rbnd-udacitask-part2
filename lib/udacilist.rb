@@ -11,11 +11,16 @@ class UdaciList
     if type == "todo" || type == "event" || type == "link"
       priority = ["high", "medium", "low", nil]
       raise UdaciListErrors::InvalidPriorityValue unless priority.include?options[:priority]
-      @items.push TodoItem.new(type, description, options) if type == "todo"
-      @items.push EventItem.new(type, description, options) if type == "event"
-      @items.push LinkItem.new(type, description, options) if type == "link"
-    else
-      raise UdaciListErrors::InvalidItemType
+      case type
+      when "todo"
+        @items.push TodoItem.new(type, description, options)
+      when "event"
+        @items.push EventItem.new(type, description, options)
+      when "link"
+        @items.push LinkItem.new(type, description, options)
+      else
+        raise UdaciListErrors::InvalidItemType
+      end
     end
   end
   
