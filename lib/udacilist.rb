@@ -18,9 +18,9 @@ class UdaciList
         @items.push EventItem.new(type, description, options)
       when "link"
         @items.push LinkItem.new(type, description, options)
-      else
-        raise UdaciListErrors::InvalidItemType
       end
+    else
+      raise UdaciListErrors::InvalidItemType
     end
   end
   
